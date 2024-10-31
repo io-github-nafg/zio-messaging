@@ -42,7 +42,7 @@ object EntranceGroupSmsService {
   }
 
   private val endpoint =
-    Endpoint(POST / "hooks" / "campaign" / long("id"))
+    Endpoint(POST / "hooks" / "campaigns" / long("id"))
       .in[RequestBody]
       .out[ResponseBody]
 
