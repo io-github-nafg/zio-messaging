@@ -47,9 +47,7 @@ object EntranceGroupSmsService {
       .out[ResponseBody]
 
   private val endpointLocator =
-    EndpointLocator.fromURL(
-      URL(Path.root / "api", URL.Location.Absolute(Scheme.HTTPS, "https://entrancegrp.com", None))
-    )
+    EndpointLocator.fromURL(URL(Path.root / "api", URL.Location.Absolute(Scheme.HTTPS, "entrancegrp.com", None)))
 
   val layer: ZLayer[Client & Config, Nothing, EntranceGroupSmsService] =
     ZLayer.fromFunction(new EntranceGroupSmsService(_, _))
