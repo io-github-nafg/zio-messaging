@@ -1,6 +1,7 @@
 groupId: io.github.nafg.zio-messaging
 projects:
   - zio-messaging
+  - zio-messaging-entrance-group
   - zio-messaging-twilio
 sonatype:
   profileName: io.github.nafg
