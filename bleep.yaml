@@ -14,6 +14,10 @@ projects:
     - io.github.nafg.scala-phonenumber::scala-phonenumber:0.5.1
     - org.postgresql:postgresql:42.7.4
     extends: template-cross-all
+  zio-messaging-entrance-group:
+    dependencies: dev.zio::zio-http:3.0.1
+    dependsOn: zio-messaging
+    extends: template-cross-all
   zio-messaging-twilio:
     dependencies: com.twilio.sdk:twilio:10.6.2
     dependsOn: zio-messaging
