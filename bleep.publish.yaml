@@ -1,4 +1,4 @@
-groupId: io.github.nafg.tcn
+groupId: io.github.nafg.zio-messaging
 projects:
   - zio-messaging
   - zio-messaging-twilio
