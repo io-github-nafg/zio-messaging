@@ -8,14 +8,16 @@ import com.twilio.rest.api.v2010.account.Message
 import zio.{Task, ZIO, ZLayer}
 
 class TwilioSmsService(config: TwilioSmsService.Config, twilioClient: TwilioClient) extends SmsService {
-  override def sendMessage(to: PhoneNumber, message: String): Task[Unit] =
+  def sendMessage(to: PhoneNumber, message: String): Task[Message] =
     ZIO
       .fromFutureJava(
         Message
           .creator(new TwilioPhoneNumber(to.formatE164), new TwilioPhoneNumber(config.from.formatE164), message)
           .createAsync(twilioClient.twilioRestClient)
       )
-      .unit
+
+  override def sendMessage(to: Seq[PhoneNumber], message: String): Task[Unit] =
+    ZIO.foreachDiscard(to)(sendMessage(_, message))
 }
 object TwilioSmsService {
   case class Config(from: PhoneNumber)

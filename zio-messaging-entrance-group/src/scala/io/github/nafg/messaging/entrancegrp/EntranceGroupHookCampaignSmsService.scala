@@ -15,7 +15,10 @@ class EntranceGroupHookCampaignSmsService(client: Client, config: EntranceGroupH
       EntranceGroupApi.com.entrancegrp.`/api`.endpointLocator
     )
 
-  override def sendMessage(to: PhoneNumber, message: String): Task[Unit] =
+  def sendMessage(
+    to: PhoneNumber,
+    message: String
+  ): ZIO[Any, Nothing, EntranceGroupApi.com.entrancegrp.`/api`.hooks.campaigns.ResponseBody] =
     ZIO.scoped {
       endpointExecutor(
         EntranceGroupApi.com.entrancegrp.`/api`.hooks.campaigns.endpoint(
@@ -25,8 +28,10 @@ class EntranceGroupHookCampaignSmsService(client: Client, config: EntranceGroupH
         .filterOrDieWith(_.code == 200) { body =>
           new RuntimeException(s"Sending SMS failed with ${body.code}")
         }
-        .unit
     }
+
+  override def sendMessage(to: Seq[PhoneNumber], message: String): Task[Unit] =
+    ZIO.foreachDiscard(to)(sendMessage(_, message))
 }
 object EntranceGroupHookCampaignSmsService {
   case class Config(campaignId: Long, authKey: zio.Config.Secret, authValue: zio.Config.Secret)
