@@ -7,10 +7,10 @@ import zio.http.Method.POST
 import zio.http.endpoint.{Endpoint, EndpointExecutor, EndpointLocator}
 import zio.http.{Client, Path, Scheme, URL, long}
 import zio.schema.{DeriveSchema, Schema}
-import zio.{Task, ZIO, ZLayer}
+import zio.{Scope, Task, ZIO, ZLayer}
 
 class EntranceGroupSmsService(client: Client, config: EntranceGroupSmsService.Config) extends SmsService {
-  private val endpointExecutor: EndpointExecutor[Any, Unit]              =
+  private val endpointExecutor: EndpointExecutor[Any, Unit, Scope]       =
     EndpointExecutor(client.addHeader(config.authKey, config.authValue), EntranceGroupSmsService.endpointLocator)
   override def sendMessage(to: PhoneNumber, message: String): Task[Unit] =
     ZIO.scoped {
