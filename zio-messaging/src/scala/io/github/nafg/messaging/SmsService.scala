@@ -5,11 +5,11 @@ import io.github.nafg.scalaphonenumber.PhoneNumber
 import zio.{Task, ULayer, ZIO, ZLayer}
 
 trait SmsService  {
-  def sendMessage(to: PhoneNumber, message: String): Task[Unit]
+  def sendMessage(to: Seq[PhoneNumber], message: String): Task[Unit]
 }
 object SmsService {
   object NoOp extends SmsService {
-    override def sendMessage(to: PhoneNumber, message: String): Task[Unit] = ZIO.unit
+    override def sendMessage(to: Seq[PhoneNumber], message: String): Task[Unit] = ZIO.unit
 
     val layer: ULayer[SmsService] = ZLayer.succeed(NoOp)
   }

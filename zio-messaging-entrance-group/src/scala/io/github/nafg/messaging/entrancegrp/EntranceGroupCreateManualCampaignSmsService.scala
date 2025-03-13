@@ -17,12 +17,12 @@ class EntranceGroupCreateManualCampaignSmsService(
       EntranceGroupApi.com.entrancegrp.`/api`.endpointLocator
     )
 
-  override def sendMessage(to: PhoneNumber, message: String): Task[Unit] =
+  override def sendMessage(to: Seq[PhoneNumber], message: String): Task[Unit] =
     ZIO.scoped {
       endpointExecutor(
         EntranceGroupApi.com.entrancegrp.apiv2.campaigns.create.endpoint(
           EntranceGroupApi.com.entrancegrp.apiv2.campaigns.create
-            .RequestBody(name = config.campaignName, `type` = "MANUAL", numbers = List(to), text_message = message)
+            .RequestBody(name = config.campaignName, `type` = "MANUAL", numbers = to.toList, text_message = message)
         )
       )
         .filterOrDieWith(_.code == 200) { body =>
