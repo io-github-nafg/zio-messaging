@@ -14,7 +14,7 @@ class EntranceGroupCreateManualCampaignSmsService(
   private val endpointExecutor =
     EndpointExecutor(
       client.addHeader(config.authKey.stringValue, config.authValue.stringValue),
-      EntranceGroupApi.com.entrancegrp.`/api`.endpointLocator
+      EntranceGroupApi.com.entrancegrp.apiv2.endpointLocator
     )
 
   override def sendMessage(to: Seq[PhoneNumber], message: String): Task[Unit] =

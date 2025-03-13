@@ -58,10 +58,10 @@ object EntranceGroupApi {
                 .out[ResponseBody]
           }
         }
-      }
 
-      val endpointLocator =
-        EndpointLocator.fromURL(URL(Path.root, URL.Location.Absolute(Scheme.HTTPS, "apiv2.entrancegrp.com", None)))
+        val endpointLocator =
+          EndpointLocator.fromURL(URL(Path.root, URL.Location.Absolute(Scheme.HTTPS, "apiv2.entrancegrp.com", None)))
+      }
     }
   }
 }
