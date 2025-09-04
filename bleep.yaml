@@ -10,7 +10,7 @@ projects:
     - template-scala-3
   zio-messaging:
     dependencies:
-    - dev.zio::zio:2.1.20
+    - dev.zio::zio:2.1.21
     - io.github.nafg.scala-phonenumber::scala-phonenumber:0.5.1
     - org.postgresql:postgresql:42.7.7
     extends: template-cross-all
