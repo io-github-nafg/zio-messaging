@@ -15,7 +15,7 @@ projects:
     - org.postgresql:postgresql:42.7.7
     extends: template-cross-all
   zio-messaging-entrance-group:
-    dependencies: dev.zio::zio-http:3.3.3
+    dependencies: dev.zio::zio-http:3.5.1
     dependsOn: zio-messaging
     extends: template-cross-all
   zio-messaging-twilio:
