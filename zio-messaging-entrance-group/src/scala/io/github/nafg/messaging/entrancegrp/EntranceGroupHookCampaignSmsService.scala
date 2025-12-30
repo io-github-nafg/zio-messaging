@@ -12,7 +12,7 @@ class EntranceGroupHookCampaignSmsService(client: Client, config: EntranceGroupH
   private val endpointExecutor =
     EndpointExecutor(
       client.addHeader(config.authKey.stringValue, config.authValue.stringValue),
-      EntranceGroupApi.com.entrancegrp.`/api`.endpointLocator
+      EntranceGroupApi.com.entrancegrp.`/api`.baseUrl
     )
 
   def sendMessage(

@@ -4,7 +4,7 @@ import io.github.nafg.scalaphonenumber.PhoneNumber
 
 import zio.http.*
 import zio.http.Method.POST
-import zio.http.endpoint.{Endpoint, EndpointLocator}
+import zio.http.endpoint.Endpoint
 import zio.schema.{DeriveSchema, Schema}
 
 object EntranceGroupApi {
@@ -36,8 +36,7 @@ object EntranceGroupApi {
           }
         }
 
-        val endpointLocator =
-          EndpointLocator.fromURL(URL(Path.root / "api", URL.Location.Absolute(Scheme.HTTPS, "entrancegrp.com", None)))
+        val baseUrl = URL(Path.root / "api", URL.Location.Absolute(Scheme.HTTPS, "entrancegrp.com", None))
       }
 
       object apiv2 {
@@ -59,8 +58,7 @@ object EntranceGroupApi {
           }
         }
 
-        val endpointLocator =
-          EndpointLocator.fromURL(URL(Path.root, URL.Location.Absolute(Scheme.HTTPS, "apiv2.entrancegrp.com", None)))
+        val baseUrl = URL(Path.root, URL.Location.Absolute(Scheme.HTTPS, "apiv2.entrancegrp.com", None))
       }
     }
   }
