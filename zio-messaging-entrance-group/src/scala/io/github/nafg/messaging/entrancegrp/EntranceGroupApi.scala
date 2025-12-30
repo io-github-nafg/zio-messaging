@@ -14,6 +14,8 @@ object EntranceGroupApi {
       n => Right(n.formatE164)
     )
 
+  private def url(domain: String, path: Path) = URL(path, URL.Location.Absolute(Scheme.HTTPS, domain, None))
+
   object com {
     object entrancegrp {
       object `/api` {
@@ -36,7 +38,7 @@ object EntranceGroupApi {
           }
         }
 
-        val baseUrl = URL(Path.root / "api", URL.Location.Absolute(Scheme.HTTPS, "entrancegrp.com", None))
+        val baseUrl = url("entrancegrp.com", Path.root / "api")
       }
 
       object apiv2 {
@@ -58,7 +60,7 @@ object EntranceGroupApi {
           }
         }
 
-        val baseUrl = URL(Path.root, URL.Location.Absolute(Scheme.HTTPS, "apiv2.entrancegrp.com", None))
+        val baseUrl = url("apiv2.entrancegrp.com", Path.root)
       }
     }
   }
