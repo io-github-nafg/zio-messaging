@@ -19,7 +19,7 @@ projects:
     dependsOn: zio-messaging
     extends: template-cross-all
   zio-messaging-twilio:
-    dependencies: com.twilio.sdk:twilio:11.3.0
+    dependencies: com.twilio.sdk:twilio:11.3.1
     dependsOn: zio-messaging
     extends: template-cross-all
 scripts:
