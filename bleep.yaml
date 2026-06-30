@@ -12,7 +12,7 @@ projects:
     dependencies:
     - dev.zio::zio:2.1.26
     - io.github.nafg.scala-phonenumber::scala-phonenumber:0.5.1
-    - org.postgresql:postgresql:42.7.11
+    - org.postgresql:postgresql:42.7.12
     extends: template-cross-all
   zio-messaging-entrance-group:
     dependencies: dev.zio::zio-http:3.11.3
